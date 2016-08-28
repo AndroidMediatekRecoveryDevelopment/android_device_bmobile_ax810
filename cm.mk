@@ -7,6 +7,10 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 # Inherit device configuration
 $(call inherit-product, device/bmobile/AX810/device_AX810.mk)
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 854
+TARGET_SCREEN_WIDTH := 480
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := AX810
 PRODUCT_NAME := cm_AX810

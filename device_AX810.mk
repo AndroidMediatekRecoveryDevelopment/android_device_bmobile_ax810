@@ -7,9 +7,11 @@ $(call inherit-product-if-exists, vendor/bmobile/AX810/AX810-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/bmobile/AX810/overlay
 
+LOCAL_PATH := device/bmobile/AX810
+
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/bmobile/AX810/kernel
+	LOCAL_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -22,3 +24,19 @@ $(call inherit-product, build/target/product/full.mk)
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_AX810
 PRODUCT_DEVICE := AX810
+
+ADDITIONAL_DEFAULT_PROPERTIES += \
+ro.adb.secure=0 \
+persist.sys.usb.config=mtp \
+persist.service.acm.enable=0 \
+ro.secure=0 \
+ro.allow.mock.location=1 \
+ro.debuggable=1 \
+ro.zygote=zygote64_32 \
+ro.mount.fs=EXT4 \
+camera.disable_zsl_mode=1 \
+dalvik.vm.dex2oat-Xms=64m \
+dalvik.vm.dex2oat-Xmx=512m \
+dalvik.vm.image-dex2oat-Xms=64m \
+dalvik.vm.image-dex2oat-Xmx=64m \
+ro.dalvik.vm.native.bridge=0 \
